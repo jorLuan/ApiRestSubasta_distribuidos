@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.unicauca.distribuidos.core.services.DTO.ProductoDTO;
-import co.edu.unicauca.distribuidos.core.services.DTO.SubastaDTO;
 import co.edu.unicauca.distribuidos.core.services.IProductoService;
 
 @RestController
@@ -51,13 +50,21 @@ public class ProductoRestController {
 		return msg;
 	}
 
-	@PostMapping("/prouctos")
+	@PostMapping("/productos")
 	public ProductoDTO create(@RequestBody ProductoDTO cliente) {
 		ProductoDTO objProducto = null;
 		objProducto = ProductoService.save(cliente);
 		return objProducto;
 	}
 
+	/*
+	 * @PostMapping("/subastas")
+	 * public SubastaDTO create2(@RequestBody SubastaDTO cliente) {
+	 * SubastaDTO objProducto = null;
+	 * objProducto = ProductoService.save2(cliente);
+	 * return objProducto;
+	 * }
+	 */
 	@GetMapping("/productos/listarCabeceras")
 	public void listarCabeceras(@RequestHeader Map<String, String> headers) {
 		System.out.println("cabeceras");

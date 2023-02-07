@@ -14,8 +14,13 @@ public class ProductoRepository {
 
 	private ArrayList<ProductoEntity> listaDeProductos;
 
+	public ArrayList<ProductoEntity> getListaDeProductos() {
+		return listaDeProductos;
+	}
+
 	public ProductoRepository() {
 		this.listaDeProductos = new ArrayList<ProductoEntity>();
+
 		cargarClientes();
 	}
 
@@ -47,6 +52,23 @@ public class ProductoRepository {
 
 		return objProducto;
 	}
+
+	/*
+	 * public SubastaEntity save2(SubastaEntity producto) {
+	 * System.out.println("Invocando a almacenar producto");
+	 * SubastaEntity objProducto = null;
+	 * for (ProductoEntity producto2 : listaDeProductos) {
+	 * if (producto2.getId() == producto.getProductId()) {
+	 * 
+	 * if (this.listaDeProdSubastados.add(producto)) {
+	 * objProducto = producto;
+	 * }
+	 * } else
+	 * System.out.println("El producto " + producto.getProductId() + " no existe");
+	 * }
+	 * return objProducto;
+	 * }
+	 */
 
 	public ProductoEntity update(Integer id, ProductoEntity producto) {
 		System.out.println("Invocando a actualizar un producto");

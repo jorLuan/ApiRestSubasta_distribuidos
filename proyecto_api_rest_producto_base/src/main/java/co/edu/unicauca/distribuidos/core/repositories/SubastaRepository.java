@@ -3,12 +3,17 @@ package co.edu.unicauca.distribuidos.core.repositories;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
+import co.edu.unicauca.distribuidos.core.models.ProductoEntity;
 import co.edu.unicauca.distribuidos.core.models.SubastaEntity;
 
+@Repository
 public class SubastaRepository {
 
     private ArrayList<SubastaEntity> listaDeProductos;
-    private ProductoRepository producto2;
+    private ArrayList<ProductoEntity> listaDeP;
+    private ProductoRepository productoprueba = new ProductoRepository();
 
     public SubastaRepository() {
         this.listaDeProductos = new ArrayList<SubastaEntity>();
@@ -35,15 +40,20 @@ public class SubastaRepository {
     }
 
     public SubastaEntity save(SubastaEntity producto) {
+        listaDeP = productoprueba.getListaDeProductos();
 
         System.out.println("Invocando a registrar subasta");
-        producto2.findById(producto.getProductId());
-
         SubastaEntity objProducto = null;
-        if (this.listaDeProductos.add(producto)) {
-            objProducto = producto;
-        }
+        for (ProductoEntity producto2 : listaDeP) {
+            if (producto2.getId() == producto.getProductId()) {
 
+                if (this.listaDeProductos.add(producto)) {
+                    objProducto = producto;
+                }
+
+            }
+
+        }
         return objProducto;
     }
 
