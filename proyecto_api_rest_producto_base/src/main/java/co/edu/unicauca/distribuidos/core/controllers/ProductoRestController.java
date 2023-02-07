@@ -1,5 +1,4 @@
 
-
 package co.edu.unicauca.distribuidos.core.controllers;
 
 import java.util.Date;
@@ -21,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.unicauca.distribuidos.core.services.DTO.ProductoDTO;
 import co.edu.unicauca.distribuidos.core.services.IProductoService;
-
+import co.edu.unicauca.distribuidos.core.services.ISubastaService;
 
 @RestController
 @RequestMapping("/api")
@@ -29,69 +28,73 @@ public class ProductoRestController {
 
 	@Autowired
 	private IProductoService ProductoService;
-	
+	@Autowired
+	private ISubastaService subastaService;
+
 	@GetMapping("/productos")
 	public List<ProductoDTO> index() {
 		return ProductoService.findAll();
 	}
-		
+
 	@GetMapping("/productos/{id}")
 	public ProductoDTO show(@PathVariable Integer id) {
-		ProductoDTO objProducto = null;		
-		objProducto = ProductoService.findById(id);		
+		ProductoDTO objProducto = null;
+		objProducto = ProductoService.findById(id);
 		return objProducto;
 	}
 
-	@GetMapping("productos2/{name}/{age}") 
-    public String getMessage(@PathVariable String name, 
-				@PathVariable("age") String edad) {        
-        String msg = String.format("%s es %s años viejo", name, edad);
-        System.out.println(msg);
-        return msg;
-    }
+	@GetMapping("productos2/{name}/{age}")
+	public String getMessage(@PathVariable String name,
+			@PathVariable("age") String edad) {
+		String msg = String.format("%s es %s años viejo", name, edad);
+		System.out.println(msg);
+		return msg;
+	}
 
-	@GetMapping("consultarProductos") 
-    public String getMessageParametros(@RequestParam String nombres, 
-	@RequestParam String apellidos,
-	@RequestParam("date") 
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fecha) {        
-        String msg = String.format("buscando un cliente por nombre: %s, apellidos: %s fecha %s", nombres, apellidos,fecha);
-        System.out.println(msg);
-        return msg;
-    }
-	
-	
+	@GetMapping("consultarProductos")
+	public String getMessageParametros(@RequestParam String nombres,
+			@RequestParam String apellidos,
+			@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fecha) {
+		String msg = String.format("buscando un cliente por nombre: %s, apellidos: %s fecha %s", nombres, apellidos,
+				fecha);
+		System.out.println(msg);
+		return msg;
+	}
+
 	@PostMapping("/prouctos")
-	public ProductoDTO create(@RequestBody ProductoDTO cliente) {	
+	public ProductoDTO create(@RequestBody ProductoDTO cliente) {
 		ProductoDTO objProducto = null;
-		objProducto =  ProductoService.save(cliente);
+		objProducto = ProductoService.save(cliente);
 		return objProducto;
 	}
-	
 
-	/*@PutMapping("/productos/{id}")
-	public ProductoDTO update(@RequestBody ProductoDTO cliente, @PathVariable Integer id) {
-		ProductoDTO objProducto = null;
-		ProductoDTO ProductoActual = ProductoService.findById(id);
-		if(ProductoActual!=null)	
-		{
-			objProducto = ProductoService.update(id,cliente);
-		}
-		return objProducto;
-	}*/
-	
-	
-	/*@DeleteMapping("/clientes/{id}")
-	public Boolean delete(@PathVariable Integer id) {				
-		Boolean bandera=false;
-		ProductoDTO ProductoActual = ProductoService.findById(id);
-		if(ProductoActual!=null)		
-		{
-			bandera = ProductoService.delete(id);
-		}
-		return bandera;
-		
-	}*/
+	/*
+	 * @PutMapping("/productos/{id}")
+	 * public ProductoDTO update(@RequestBody ProductoDTO cliente, @PathVariable
+	 * Integer id) {
+	 * ProductoDTO objProducto = null;
+	 * ProductoDTO ProductoActual = ProductoService.findById(id);
+	 * if(ProductoActual!=null)
+	 * {
+	 * objProducto = ProductoService.update(id,cliente);
+	 * }
+	 * return objProducto;
+	 * }
+	 */
+
+	/*
+	 * @DeleteMapping("/clientes/{id}")
+	 * public Boolean delete(@PathVariable Integer id) {
+	 * Boolean bandera=false;
+	 * ProductoDTO ProductoActual = ProductoService.findById(id);
+	 * if(ProductoActual!=null)
+	 * {
+	 * bandera = ProductoService.delete(id);
+	 * }
+	 * return bandera;
+	 * 
+	 * }
+	 */
 
 	@GetMapping("/productos/listarCabeceras")
 	public void listarCabeceras(@RequestHeader Map<String, String> headers) {
@@ -100,5 +103,5 @@ public class ProductoRestController {
 			System.out.println(String.format("Cabecera '%s' = %s", key, value));
 		});
 	}
-			
+
 }
