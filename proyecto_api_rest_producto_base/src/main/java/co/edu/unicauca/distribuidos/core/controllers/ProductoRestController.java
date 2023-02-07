@@ -20,7 +20,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.unicauca.distribuidos.core.services.DTO.ProductoDTO;
 import co.edu.unicauca.distribuidos.core.services.IProductoService;
+<<<<<<< Updated upstream
 import co.edu.unicauca.distribuidos.core.services.ISubastaService;
+=======
+>>>>>>> Stashed changes
 
 @RestController
 @RequestMapping("/api")
@@ -28,8 +31,11 @@ public class ProductoRestController {
 
 	@Autowired
 	private IProductoService ProductoService;
+<<<<<<< Updated upstream
 	@Autowired
 	private ISubastaService subastaService;
+=======
+>>>>>>> Stashed changes
 
 	@GetMapping("/productos")
 	public List<ProductoDTO> index() {
@@ -43,6 +49,7 @@ public class ProductoRestController {
 		return objProducto;
 	}
 
+<<<<<<< Updated upstream
 	@GetMapping("productos2/{name}/{age}")
 	public String getMessage(@PathVariable String name,
 			@PathVariable("age") String edad) {
@@ -51,6 +58,8 @@ public class ProductoRestController {
 		return msg;
 	}
 
+=======
+>>>>>>> Stashed changes
 	@GetMapping("consultarProductos")
 	public String getMessageParametros(@RequestParam String nombres,
 			@RequestParam String apellidos,
@@ -59,6 +68,7 @@ public class ProductoRestController {
 				fecha);
 		System.out.println(msg);
 		return msg;
+<<<<<<< Updated upstream
 	}
 
 	@PostMapping("/prouctos")
@@ -95,6 +105,16 @@ public class ProductoRestController {
 	 * 
 	 * }
 	 */
+=======
+	}
+
+	@PostMapping("/productos")
+	public ProductoDTO create(@RequestBody ProductoDTO cliente) {
+		ProductoDTO objProducto = null;
+		objProducto = ProductoService.save(cliente);
+		return objProducto;
+	}
+>>>>>>> Stashed changes
 
 	@GetMapping("/productos/listarCabeceras")
 	public void listarCabeceras(@RequestHeader Map<String, String> headers) {

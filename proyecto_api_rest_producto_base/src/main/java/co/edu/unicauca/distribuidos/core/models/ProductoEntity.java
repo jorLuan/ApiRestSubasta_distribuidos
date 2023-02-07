@@ -1,6 +1,5 @@
 package co.edu.unicauca.distribuidos.core.models;
 
-import java.util.Date;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -8,15 +7,17 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter @AllArgsConstructor
+@Getter
+@Setter
+@AllArgsConstructor
 public class ProductoEntity {
-    private Integer id;		
+        private Integer id;
         @NotNull
-        @Size(min=5,max=50)
-	private String nombre;	
-        private int valorOferta;
-	public ProductoEntity()
-	{
-		
-	}
+        @Size(min = 5, max = 50)
+        private String nombre;
+        private Integer valorOferta;
+
+        public ProductoEntity() {
+
+        }
 }

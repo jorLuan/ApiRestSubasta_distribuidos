@@ -1,5 +1,7 @@
 package co.edu.unicauca.distribuidos.core.services;
 
+
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +29,8 @@ public class SubastaServiceImpl implements ISubastaService {
         // TODO Auto-generated method stub
         return null;
     }
+
+public class SubastaServiceImpl implements ISubastaService {
+>>>>>>> Stashed changes
 
 }

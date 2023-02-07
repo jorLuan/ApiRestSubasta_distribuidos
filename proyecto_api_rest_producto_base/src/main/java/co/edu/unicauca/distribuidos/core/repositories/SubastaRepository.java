@@ -74,10 +74,21 @@ public class SubastaRepository {
     }
 
     private void cargarClientes() {
+<<<<<<< Updated upstream
 
         SubastaEntity objProducto1 = new SubastaEntity(1, true, listaDeProductos.get(0).getId());
         this.listaDeProductos.add(objProducto1);
         
+=======
+        SubastaEntity objProducto1 = new SubastaEntity(1, "mona lisa", 5000);
+        this.listaDeProductos.add(objProducto1);
+        SubastaEntity objProducto2 = new SubastaEntity(2, "ban goh", 1000);
+        this.listaDeProductos.add(objProducto2);
+        SubastaEntity objProducto3 = new SubastaEntity(3, "cuadro de las rosas", 560000);
+        this.listaDeProductos.add(objProducto3);
+        SubastaEntity objProducto = new SubastaEntity(4, "sarcofagpo", 4000);
+        this.listaDeProductos.add(objProducto);
+>>>>>>> Stashed changes
     }
 
 }
