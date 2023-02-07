@@ -5,11 +5,13 @@ import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import co.edu.unicauca.distribuidos.core.models.SubastaEntity;
 import co.edu.unicauca.distribuidos.core.repositories.SubastaRepository;
 import co.edu.unicauca.distribuidos.core.services.DTO.SubastaDTO;
 
+@Service
 public class SubastaServiceImpl implements ISubastaService {
 
     @Autowired
