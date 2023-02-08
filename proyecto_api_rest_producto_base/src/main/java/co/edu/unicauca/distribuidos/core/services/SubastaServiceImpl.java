@@ -7,8 +7,10 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import co.edu.unicauca.distribuidos.core.models.ProductoEntity;
 import co.edu.unicauca.distribuidos.core.models.SubastaEntity;
 import co.edu.unicauca.distribuidos.core.repositories.SubastaRepository;
+import co.edu.unicauca.distribuidos.core.services.DTO.ProductoDTO;
 import co.edu.unicauca.distribuidos.core.services.DTO.SubastaDTO;
 
 @Service
@@ -41,6 +43,13 @@ public class SubastaServiceImpl implements ISubastaService {
         SubastaEntity clienteEntity = this.modelMapper.map(cliente, SubastaEntity.class);
         SubastaEntity objCLienteEntity = this.servicioAccesoBaseDatos.save(clienteEntity);
         SubastaDTO clienteDTO = this.modelMapper.map(objCLienteEntity, SubastaDTO.class);
+        return clienteDTO;
+    }
+
+    @Override
+    public ProductoDTO mostarProdSubastado(Integer id) {
+        ProductoEntity objCLienteEntity = this.servicioAccesoBaseDatos.mostrarProduct(id);
+        ProductoDTO clienteDTO = this.modelMapper.map(objCLienteEntity, ProductoDTO.class);
         return clienteDTO;
     }
 }
