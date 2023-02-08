@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.unicauca.distribuidos.core.services.ISubastaService;
+import co.edu.unicauca.distribuidos.core.services.DTO.ProductoDTO;
 import co.edu.unicauca.distribuidos.core.services.DTO.SubastaDTO;
 
 @RestController
@@ -31,6 +32,13 @@ public class SubastaRestController {
     public SubastaDTO show(@PathVariable Integer id) {
         SubastaDTO objProducto = null;
         objProducto = subastaService.findById(id);
+        return objProducto;
+    }
+
+    @GetMapping("/productosSubastados/{id}")
+    public ProductoDTO showProductoSubastado(@PathVariable Integer id) {
+        ProductoDTO objProducto = null;
+        objProducto = subastaService.mostarProdSubastado(id);
         return objProducto;
     }
 

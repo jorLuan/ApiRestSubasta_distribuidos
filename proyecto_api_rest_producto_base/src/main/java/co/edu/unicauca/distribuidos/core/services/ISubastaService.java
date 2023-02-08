@@ -2,6 +2,7 @@ package co.edu.unicauca.distribuidos.core.services;
 
 import java.util.List;
 
+import co.edu.unicauca.distribuidos.core.services.DTO.ProductoDTO;
 import co.edu.unicauca.distribuidos.core.services.DTO.SubastaDTO;
 
 public interface ISubastaService {
@@ -11,4 +12,6 @@ public interface ISubastaService {
     public SubastaDTO findById(Integer id);
 
     public SubastaDTO save(SubastaDTO product); // registrar
+
+    public ProductoDTO mostarProdSubastado(Integer id);
 }
