@@ -81,7 +81,8 @@ public class SubastaRepository {
         SubastaEntity objProducto = null;
 
         for (int i = 0; i < this.listaDeSubastas.size(); i++) {
-            if (this.listaDeSubastas.get(i).getProductId() == id) {
+            if (this.listaDeSubastas.get(i).getProductId() == id
+                    && producto.getValorSubasta() > listaDeSubastas.get(i).getValorSubasta()) {
                 this.listaDeSubastas.set(i, producto);
                 objProducto = producto;
                 break;

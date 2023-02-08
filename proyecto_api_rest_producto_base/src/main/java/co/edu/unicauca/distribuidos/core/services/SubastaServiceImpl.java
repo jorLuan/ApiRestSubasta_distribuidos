@@ -52,4 +52,12 @@ public class SubastaServiceImpl implements ISubastaService {
         ProductoDTO clienteDTO = this.modelMapper.map(objCLienteEntity, ProductoDTO.class);
         return clienteDTO;
     }
+
+    @Override
+    public SubastaDTO Ofertar(Integer id, SubastaDTO cliente) {
+        SubastaEntity cancionEntity = this.modelMapper.map(cliente, SubastaEntity.class);
+        SubastaEntity cancionEntityActualizado = this.servicioAccesoBaseDatos.update(id, cancionEntity);
+        SubastaDTO cancionesDTO = this.modelMapper.map(cancionEntityActualizado, SubastaDTO.class);
+        return cancionesDTO;
+    }
 }
