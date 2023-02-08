@@ -14,4 +14,6 @@ public interface ISubastaService {
     public SubastaDTO save(SubastaDTO product); // registrar
 
     public ProductoDTO mostarProdSubastado(Integer id);
+
+    public SubastaDTO Ofertar(Integer id, SubastaDTO cliente);
 }
